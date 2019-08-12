@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_ERROR,
