@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   FETCH_CUSTOMERS_SUCCESS,
   FETCH_CUSTOMERS_ERROR,
@@ -26,13 +27,8 @@ export default (state = initialState, action) => {
     case UPDATE_DATA:
       const { payload } = action;
       const { origCustomerList } = state;
-      const filterData = origCustomerList.filter(customer => {
-        return (
-          payload.get(customer._id) === true ||
-          payload.get(customer._id) === undefined
-        );
-      });
-      const val = getFilteredData(origCustomerList,payload)
+      let shallow = _.cloneDeep(origCustomerList); 
+      const filterData = getFilteredData(shallow,payload)
       console.log("VAL", filterData);
 
       return {

@@ -30,11 +30,11 @@ const getOrders = (orders=[],checkedItems)=>{
         const { items = [] } = order;
         const newItems = getItems(items,checkedItems);
         order.items = newItems;
-        return newItems;
+        return order.items;
       });
 }
 export const getFilteredData = (customerList, checkedItems) => {
-  const arr = customerList.filter(customer => {
+  return customerList.filter(customer => {
     if (
       checkedItems.get(customer._id) === true ||
       checkedItems.get(customer._id) === undefined
@@ -42,10 +42,8 @@ export const getFilteredData = (customerList, checkedItems) => {
       const { orders = [] } = customer;
        const newOrder = getOrders(orders,checkedItems)
        customer.orders = newOrder;
-       return newOrder;
+       return customer.orders;
     }
-    return customer;
+    return '';
   });
-  console.log("arr", arr);
-  return arr;
 };

@@ -29,7 +29,6 @@ class SideBar extends React.Component {
       checkedItems: prevState.checkedItems.set(item, isChecked)
     }),()=>{
         this.props.handleAction(this.state.checkedItems)
-        console.log("checkeditems",this.state.checkedItems);
     });
   };
   render() {
