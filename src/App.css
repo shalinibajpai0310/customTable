@@ -1,0 +1,156 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+button{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  color:black;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+button:focus {outline:0;}
+
+.nested-table table{
+        margin-bottom:0;
+        border:none
+}
+
+.nested-table table th {
+  border-top:none;
+  border-right:none;
+  border-bottom: none;
+  border-left: 1px solid #dee2e6;
+}
+.nested-table table th:first-child{
+  border:none
+}
+.nested-table table td {
+  border-right:none;
+  border-left: 1px solid #dee2e6;
+}
+.nested-table table td:first-child{
+  border-left:none
+}
+.nested-table table tr:last-child td{
+  border-bottom:none
+}
+.thead-style th{
+  width: 30%
+}
+.thead-style th:first-child{
+  width:10%
+}
+.levelTwo th:nth-child(2){
+  padding-left:20px;
+}
+.levelThree th:nth-child(2){
+  padding-left:30px;
+}
+.expandTwo table tbody td:first-child{
+  text-align:center;
+}
+.expandTwo table td:nth-child(2){
+  padding-left:20px;
+}
+.expandThree{
+  text-align: left;
+}
+.expandThree table td:nth-child(2){
+  padding-left:30px;
+}
+.tdStyle{
+  padding:0 !important;
+  border:none !important
+}
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #D3D3D3;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+.checkList{
+  padding-left:10px;
+}
