@@ -24,14 +24,13 @@ export const fetchCustomersError = (error) => {
 
 export const fetchCustomers =() => {
     return dispatch => {
-        fetch('http://localhost:3001/customers')
+        fetch('./customersList.json')
         .then(res => res.json())
         .then(res => {
             if(res.error) {
                 throw(res.error);
             }
-            dispatch(fetchCustomersSuccess(res));
-            return res.customers;
+            dispatch(fetchCustomersSuccess(res.customers));
         })
         .catch(error => {
             dispatch(fetchCustomersError(error));

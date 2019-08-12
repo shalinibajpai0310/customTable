@@ -26,14 +26,10 @@ export default (state = initialState, action) => {
       };
     case UPDATE_DATA:
       const { payload } = action;
-      const { origCustomerList } = state;
-      let shallow = _.cloneDeep(origCustomerList); 
-      const filterData = getFilteredData(shallow,payload)
-      console.log("VAL", filterData);
 
       return {
         ...state,
-        customers:filterData
+        customers:payload
       };
     default:
       return state;

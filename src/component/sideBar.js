@@ -1,5 +1,7 @@
 import React from "react";
+import _ from 'lodash';
 import CheckBox from "./checkBox";
+import {getFilteredData} from '../utils/utils';
 
 class SideBar extends React.Component {
   state = {
@@ -28,14 +30,17 @@ class SideBar extends React.Component {
     this.setState(prevState => ({
       checkedItems: prevState.checkedItems.set(item, isChecked)
     }),()=>{
-        this.props.handleAction(this.state.checkedItems)
+      const { customerList } = this.props;
+      const { checkedItems} = this.state;
+
+      let shallowList = _.cloneDeep(customerList); 
+      const filterData = getFilteredData(shallowList,checkedItems)
+      this.props.handleAction(filterData)
     });
   };
   render() {
     const { customerList,itemList} = this.props;
-    console.log("itemList",itemList);
     const { showBar, checkedItems } = this.state;
-    console.log(this.state.checkedItems);
     return (
       <>
         {showBar && (
@@ -89,7 +94,7 @@ class SideBar extends React.Component {
 
         <div id="main">
           <button className="openbtn" onClick={() => this.handleClick()}>
-            {showBar ? "Hide List" : "Show List"}
+            {showBar ? "Hide Filter" : "Show Filter"}
           </button>
         </div>
       </>
