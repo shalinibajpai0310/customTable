@@ -3,7 +3,6 @@ import {
   FETCH_CUSTOMERS_ERROR,
   UPDATE_DATA
 } from "../actions/actionTypes";
-import {getFilteredData} from '../utils/utils';
 const initialState = {
   customers: [],
   origCustomerList: [],
