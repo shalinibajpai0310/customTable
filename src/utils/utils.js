@@ -17,18 +17,21 @@ export const getItemList = (data = [], itemList = []) => {
   return itemList;
 };
 
-const getItems = (items=[],checkedItems) => {
+const getItems = (items=[],checkedItems,customer) => {
     return items.filter(item => {
-        return (
-          checkedItems.get(item.itemId) === true ||
-          checkedItems.get(item.itemId) === undefined
-        );
+      if(checkedItems.get(item.itemId) === true ||
+      checkedItems.get(item.itemId) === undefined){
+        return item;
+      }else{
+        customer.rowHighLight=true;
+        return '';
+      }
       });
 }
-const getOrders = (orders=[],checkedItems)=>{
+const getOrders = (orders=[],checkedItems,customer)=>{
     return orders.filter(order => {
         const { items = [] } = order;
-        const newItems = getItems(items,checkedItems);
+        const newItems = getItems(items,checkedItems,customer);
         order.items = newItems;
         return order.items;
       });
@@ -40,10 +43,17 @@ export const getFilteredData = (customerList, checkedItems) => {
       checkedItems.get(customer._id) === undefined
     ) {
       const { orders = [] } = customer;
-       const newOrder = getOrders(orders,checkedItems)
+       const newOrder = getOrders(orders,checkedItems,customer)
        customer.orders = newOrder;
        return customer.orders;
     }
     return '';
   });
 };
+
+export const getCheckedItemList = (customerList=[],itemList=[]) =>{
+  let checkedItems =  new Map()
+  customerList.map(customer=>checkedItems.set(customer._id,true));
+  itemList.map(item=>checkedItems.set(item.itemId,true));
+  return checkedItems;
+}

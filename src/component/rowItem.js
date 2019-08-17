@@ -11,7 +11,7 @@ class RowItem extends React.Component {
       showTable: !this.state.showTable
     });
   };
-  renderRow = (item, cols, level) => {
+  renderRow = (item, cols, level,rowHighLight) => {
     // handle the column data within each row
     let cells = [];
     cells =
@@ -28,13 +28,13 @@ class RowItem extends React.Component {
       return <td key ={i+1}>{item[colData.dataIndex]}</td>;
     });
     cells.push(remainingCells);
-    return <tr>{cells}</tr>;
+    return <tr className={rowHighLight ? 'rowHighLight' :''}>{cells}</tr>;
   };
   render() {
-    const { row, cols, level } = this.props;
+    const { row, cols, level,rowHighLight } = this.props;
     return (
       <>
-        {this.renderRow(row, cols, level)}
+        {this.renderRow(row, cols, level, rowHighLight)}
         {this.state.showTable && (
           <tr>
             <td colSpan="4" className="tdStyle">

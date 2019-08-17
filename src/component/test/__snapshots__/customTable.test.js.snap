@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CustomTable /> renders without crashing 1`] = `ShallowWrapper {}`;
+
+exports[`<CustomTable /> renders without crashing with level 1 1`] = `ShallowWrapper {}`;
+
+exports[`<CustomTable /> renders without crashing with level 1 2`] = `ShallowWrapper {}`;
+
+exports[`<CustomTable /> renders without crashing with level 2 1`] = `ShallowWrapper {}`;
+
+exports[`<CustomTable /> renders without crashing with level 3 1`] = `ShallowWrapper {}`;

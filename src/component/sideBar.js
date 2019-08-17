@@ -1,13 +1,25 @@
 import React from "react";
-import _ from 'lodash';
+import _ from "lodash";
 import CheckBox from "./checkBox";
-import {getFilteredData} from '../utils/utils';
+import { getFilteredData, getCheckedItemList } from "../utils/utils";
 
 class SideBar extends React.Component {
-  state = {
-    showBar: false,
-    checkedItems: new Map()
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showBar: false,
+      checkedItems: new Map()
+    };
+  }
+  componentDidUpdate(prevProps) {
+    const { customerList, itemList } = this.props;
+    if (prevProps.customerList !== customerList) {
+      const checkedItems = getCheckedItemList(customerList, itemList);
+      this.setState({
+        checkedItems: checkedItems
+      });
+    }
+  }
   handleClick = () => {
     this.setState(
       {
@@ -27,19 +39,23 @@ class SideBar extends React.Component {
   handleChange = e => {
     const item = e.target.id;
     const isChecked = e.target.checked;
-    this.setState(prevState => ({
-      checkedItems: prevState.checkedItems.set(item, isChecked)
-    }),()=>{
-      const { customerList } = this.props;
-      const { checkedItems} = this.state;
+    this.setState(
+      prevState => ({
+        checkedItems: prevState.checkedItems.set(item, isChecked)
+      }),
+      () => {
+        const { customerList } = this.props;
+        const { checkedItems } = this.state;
 
-      let shallowList = _.cloneDeep(customerList); 
-      const filterData = getFilteredData(shallowList,checkedItems)
-      this.props.handleAction(filterData)
-    });
+        let shallowList = _.cloneDeep(customerList);
+        const filterData = getFilteredData(shallowList, checkedItems);
+        console.log("data", filterData);
+        this.props.handleAction(filterData);
+      }
+    );
   };
   render() {
-    const { customerList,itemList} = this.props;
+    const { customerList, itemList } = this.props;
     const { showBar, checkedItems } = this.state;
     return (
       <>
@@ -55,11 +71,7 @@ class SideBar extends React.Component {
                         key={index}
                         id={customer._id}
                         name={customer.name}
-                        checked={
-                          checkedItems.size === 0
-                            ? true
-                            : checkedItems.get(customer.name)
-                        }
+                        checked={checkedItems.get(customer._id)}
                         onChange={e => this.handleChange(e)}
                       />
                     );
@@ -77,11 +89,7 @@ class SideBar extends React.Component {
                         key={index}
                         id={item.itemId}
                         name={item.itemName}
-                        checked={
-                          checkedItems.size === 0
-                            ? true
-                            : checkedItems.get(item.itemName)
-                        }
+                        checked={checkedItems.get(item.itemId)}
                         onChange={e => this.handleChange(e)}
                       />
                     );

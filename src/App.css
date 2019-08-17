@@ -154,3 +154,6 @@ button:focus {outline:0;}
 .checkList{
   padding-left:10px;
 }
+.rowHighLight{
+  background: darkgrey;
+}

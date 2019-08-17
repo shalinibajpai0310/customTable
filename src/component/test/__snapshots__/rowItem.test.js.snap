@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RowItem /> renders nested list 1`] = `ShallowWrapper {}`;
+
+exports[`<RowItem /> renders nested list 1 1`] = `ShallowWrapper {}`;
+
+exports[`<RowItem /> renders without crashing 1`] = `ShallowWrapper {}`;
+
+exports[`<RowItem /> renders without crashing with level 1 1`] = `ShallowWrapper {}`;
